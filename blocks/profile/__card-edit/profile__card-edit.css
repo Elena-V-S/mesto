@@ -1,0 +1,15 @@
+.profile__card-edit {
+    background-image: url('../../../images/Vector-plas.png');
+    min-width: 150px;
+    height: 50px;
+
+}
+@media screen and (max-width: 680px) {
+    .profile__card-edit {
+        width: 280px;
+    }
+}
+.profile__card-edit:hover {
+    cursor : pointer;
+    opacity: 0.59;
+}

@@ -1,0 +1,7 @@
+.elements__item {
+    max-width: 282px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+}

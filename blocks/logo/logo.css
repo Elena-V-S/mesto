@@ -1,0 +1,19 @@
+.logo {
+    background-image: url('../../images/Vector-logo.png');
+    width: 142px;
+    height: 33px; 
+    margin-bottom: 40px;
+    background-size: cover;
+}
+@media screen and (max-width: 680px) {
+    .logo {
+        width: 105px;
+        height: 25px; 
+        margin-bottom: 30px;  
+    }
+}
+
+.logo:hover {
+    cursor : pointer;
+    opacity: 0.6;;
+}

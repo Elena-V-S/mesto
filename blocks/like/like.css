@@ -1,0 +1,13 @@
+.like {
+    background-image: url('../../images/Vector-heart.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    max-width: 20px;
+    height: 18px;
+    width: 100%;
+    background-size: contain;
+}
+.like:hover {
+    cursor : pointer;
+    opacity: 0.6;;
+}

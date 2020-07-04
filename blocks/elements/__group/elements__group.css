@@ -1,0 +1,9 @@
+.elements__group {
+    max-width: 282px;
+    margin: 0;
+    border-radius: 10px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-color: #FFFFFF;
+}

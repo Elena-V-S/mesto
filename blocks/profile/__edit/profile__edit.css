@@ -1,0 +1,16 @@
+.profile__edit {
+    background-image: url('../../../images/Vector-pencil.png');
+    width: 24px;
+    height: 24px;
+
+}
+@media screen and (max-width: 680px) {
+    .profile__edit {
+        width: 18px;
+        height: 18px;
+    }
+}
+.profile__edit:hover {
+    cursor : pointer;
+    opacity: 0.59;
+}

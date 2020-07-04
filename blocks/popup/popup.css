@@ -1,0 +1,19 @@
+@import url('./__button/popup__button.css');
+@import url('./__close/popup__close.css');
+@import url('./__container/popup__container.css');
+@import url('./__text/popup__text.css');
+@import url('./__title/popup__title.css');
+
+.popup {
+    width:100%;
+    min-height:100%;
+    background: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}

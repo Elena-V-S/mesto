@@ -1,0 +1,5 @@
+.profile__person {
+    display: flex;
+    margin-bottom: 8px;
+    align-items: baseline;
+}

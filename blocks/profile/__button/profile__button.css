@@ -1,0 +1,9 @@
+.profile__button {
+    border: 1px solid white;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 0.2s linear;
+}
