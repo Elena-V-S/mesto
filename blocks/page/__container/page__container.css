@@ -18,3 +18,8 @@
         padding-right: 60px;
     }
 }
+@media screen and (max-width: 480px) {
+    .page__container {
+        padding: 28px 0 36px 0;
+    }
+}

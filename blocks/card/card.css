@@ -1,0 +1,15 @@
+@import url('./__description/card__description.css');
+@import url('./__group/card__group.css');
+@import url('./__image/card__image.css');
+@import url('./__like/card__like.css');
+@import url('./__title/card__title.css');
+
+
+
+.card {
+    max-width: 282px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+}

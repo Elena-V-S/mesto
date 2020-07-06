@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,6 @@
     <div class="page__container">
         <header class="header">
             <div class="logo"></div>
-            <div class="header__line"></div>
         </header>
         <main class="content">
             <section class="profile">
@@ -19,70 +18,70 @@
                     <div class="profile__info">
                         <div class="profile__person">
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
-                            <div class="profile__edit profile__button"></div>
+                            <button class="profile__edit profile__button" type="submit"></button>
                         </div>
                         <p class="profile__activity">Исследователь океана</p>
                     </div>
-                    <div class=" profile__card-edit profile__button"></div>
+                    <button type="submit" class=" profile__card-edit profile__button"></button>
                 </div>
             </section>
         
             <section class="elements">
                 <ul class="elements__list">
-                    <li class="elements__item">
-                        <figure class="elements__group">
-                            <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="карачаево-черкессия" class="elements__image">
-                            <figcaption class="elements__description">
-                                <p class="elements__title">Карачаево-Черкессия</p>
-                                <div class="like"></div>
+                    <li class="card">
+                        <figure class="card__group">
+                            <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="карачаево-черкессия" class="card__image">
+                            <figcaption class="card__description">
+                                <p class="card__title">Карачаево-Черкессия</p>
+                                <button type="submit" class="card__like"></button>
                             </figcaption>
-                        </figcaption>
+                        </figure>
                     </li>
-                    <li class="elements__item">
-                        <figure class="elements__group">
-                            <img src="./images/kirill-pershin-1404681-unsplash.png" alt="гора Эльбрус" class="elements__image">
-                            <figcaption class="elements__description">
-                                <p class="elements__title">Гора Эльбрус</p>
-                                <div class="like"></div>
+                    <li class="card">
+                        <figure class="card__group">
+                            <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="гора Эльбрус" class="card__image">
+                            <figcaption class="card__description">
+                                <p class="card__title">Гора Эльбрус</p>
+                                <button type="submit" class="card__like"></button>
                             </figcaption>
-                        </figcaption>
+                        </figure>
                     </li>
-                    <li class="elements__item">
-                        <figure class="elements__group">
-                            <img src="./images/kirill-pershin-1556355-unsplash.png" alt="домбай" class="elements__image">
-                            <figcaption class="elements__description">
-                                <p class="elements__title">Домбай</p>
-                                <div class="like"></div>
+                    <li class="card">
+                        <figure class="card__group">
+                            <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="домбай" class="card__image">
+                            <figcaption class="card__description">
+                                <p class="card__title">Домбай</p>
+                                <button type="submit" class="card__like"></button>
                             </figcaption>
-                        </figcaption>
+                        </figure>
                     </li>
                     
-                    <li class="elements__item">
-                        <figure class="elements__group">
-                            <img src="./images/kirill-pershin-1404681-unsplash.png" alt="гора эльбрус" class="elements__image">
-                            <figcaption class="elements__description">
-                                <p class="elements__title">Гора Эльбрус</p>
-                                <div class="like"></div>
+                    <li class="card">
+                        <figure class="card__group">
+                            <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="гора эльбрус" class="card__image">
+                            <figcaption class="card__description">
+                                <p class="card__title">Гора Эльбрус</p>
+                                <button type="submit" class="card__like"></button>
                             </figcaption>
-                        </figcaption>
+                        </figure>
                     </li>
-                    <li class="elements__item">
-                        <figure class="elements__group">
-                            <img src="./images/kirill-pershin-1556355-unsplash.png" alt="домбай" class="elements__image">
-                            <figcaption class="elements__description">
-                                <p class="elements__title">Домбай</p>
-                                <div class="like"></div>
+                    <li class="card">
+                        <figure class="card__group">
+                            <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="домбай" class="card__image">
+                            <figcaption class="card__description">
+                                <p class="card__title">Домбай</p>
+                                <button type="submit" class="card__like"></button>
                             </figcaption>
-                        </figcaption>
+                        </figure>
                     </li>
-                    <li class="elements__item">
-                        <figure class="elements__group">
-                            <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="карачаево-черкессия" class="elements__image">
-                            <figcaption class="elements__description">
-                                <p class="elements__title">Карачаево-Черкессия</p>
-                                <div class="like"></div>
+                    <li class="card">
+                        <figure class="card__group">
+                            <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="карачаево-черкессия" class="card__image">
+                            <figcaption class="card__description">
+                                <p class="card__title">Карачаево-Черкессия</p>
+                                <button type="submit" class="card__like"></button>
                             </figcaption>
-                        </figcaption>
+                        </figure>
                     </li>
                 </ul>
             </section>
@@ -93,15 +92,16 @@
         </footer>
         <div class="popup">
             <div class="popup__container">
-                <button class="popup__close"></button>
+                <button type="button" class="popup__close"></button>
                 <p class="popup__title">Редактировать профиль</p>
-                <form action="#" class="form">
-                    <input type="text" class="form__input form__input_type_name" name="name" value="Жак-Ив Кусто">
-                    <input type="text" class="form__input form__input_type_activity" name="about" value="Исследователь океана">
+                <form action="#" class="form" name="add-profile" method="dialog">
+                    <input type="text" class="form__input form__input_type_name" name="name" placeholder="имя" required>
+                    <input type="text" class="form__input form__input_type_activity" name="about" placeholder="профессия" required>
                     <button type="submit" class="form__button">Сохранить</button>
                 </form>
             </div>
         </div>
+    </div>
 <script src='./scripts/index.js'></script> 
 </body>
 </html>

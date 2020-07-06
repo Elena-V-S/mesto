@@ -5,7 +5,6 @@
 }
 @media screen and (max-width: 680px) {
     .profile__info {
-        display: flex;
         align-items: center;
         margin-bottom: 36px;
     }

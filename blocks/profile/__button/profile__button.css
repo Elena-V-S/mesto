@@ -6,4 +6,9 @@
     background-repeat: no-repeat;
     background-position: center;
     transition: opacity 0.2s linear;
+    padding: 0;
+    background-color: transparent;
 }
+.profile__button:focus {
+    outline: none;
+ }

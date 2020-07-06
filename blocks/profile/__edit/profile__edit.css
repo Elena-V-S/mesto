@@ -1,5 +1,5 @@
 .profile__edit {
-    background-image: url('../../../images/Vector-pencil.png');
+    background-image: url('../../../images/Vector-pencil.svg');
     width: 24px;
     height: 24px;
 
@@ -12,5 +12,5 @@
 }
 .profile__edit:hover {
     cursor : pointer;
-    opacity: 0.59;
+    opacity: 0.6;
 }

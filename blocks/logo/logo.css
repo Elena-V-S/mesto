@@ -1,5 +1,5 @@
 .logo {
-    background-image: url('../../images/Vector-logo.png');
+    background-image: url('../../images/Vector-logo.svg');
     width: 142px;
     height: 33px; 
     margin-bottom: 40px;
@@ -12,8 +12,8 @@
         margin-bottom: 30px;  
     }
 }
-
-.logo:hover {
-    cursor : pointer;
-    opacity: 0.6;;
+@media screen and (max-width: 480px) {
+    .logo {
+        margin-left: 27px;
+    }
 }

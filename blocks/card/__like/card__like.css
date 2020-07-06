@@ -1,13 +1,16 @@
-.like {
-    background-image: url('../../images/Vector-heart.png');
+.card__like {
+    background-image: url('../../../images/vector-heart.svg');
     background-repeat: no-repeat;
     background-position: center;
     max-width: 20px;
     height: 18px;
     width: 100%;
     background-size: contain;
+    padding: 0;
+    background-color: transparent;
+    border: none;
 }
-.like:hover {
+.card__like:hover {
     cursor : pointer;
     opacity: 0.6;;
 }
