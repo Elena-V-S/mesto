@@ -22,75 +22,21 @@
                         </div>
                         <p class="profile__activity">Исследователь океана</p>
                     </div>
-                    <button type="button" class=" profile__card-edit profile__button"></button>
+                    <button type="button" class="profile__card-edit profile__button"></button>
                 </div>
             </section>
         
             <section class="elements">
                 <ul class="elements__list">
-                    <li class="card">
-                        <figure class="card__group">
-                            <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="карачаево-черкессия" class="card__image">
-                            <figcaption class="card__description">
-                                <h3 class="card__title">Карачаево-Черкессия</h3>
-                                <button type="button" class="card__like"></button>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="card">
-                        <figure class="card__group">
-                            <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="гора Эльбрус" class="card__image">
-                            <figcaption class="card__description">
-                                <h3 class="card__title">Гора Эльбрус</h3>
-                                <button type="button" class="card__like"></button>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="card">
-                        <figure class="card__group">
-                            <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="домбай" class="card__image">
-                            <figcaption class="card__description">
-                                <h3 class="card__title">Домбай</h3>
-                                <button type="button" class="card__like"></button>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    
-                    <li class="card">
-                        <figure class="card__group">
-                            <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="гора эльбрус" class="card__image">
-                            <figcaption class="card__description">
-                                <h3 class="card__title">Гора Эльбрус</h3>
-                                <button type="button" class="card__like"></button>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="card">
-                        <figure class="card__group">
-                            <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="домбай" class="card__image">
-                            <figcaption class="card__description">
-                                <h3 class="card__title">Домбай</h3>
-                                <button type="button" class="card__like"></button>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="card">
-                        <figure class="card__group">
-                            <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="карачаево-черкессия" class="card__image">
-                            <figcaption class="card__description">
-                                <h3 class="card__title">Карачаево-Черкессия</h3>
-                                <button type="button" class="card__like"></button>
-                            </figcaption>
-                        </figure>
-                    </li>
+                  
                 </ul>
             </section>
         </main>
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
-
         </footer>
-        <div class="popup">
+
+        <div class="popup popup_type_edit">
             <div class="popup__container">
                 <button type="button" class="popup__close"></button>
                 <h4 class="popup__title">Редактировать профиль</h4>
@@ -101,7 +47,41 @@
                 </form>
             </div>
         </div>
+        <div class="popup popup_type_new-card">
+            <div class="popup__container">
+                <button type="button" class="popup__close"></button>
+                <h4 class="popup__title">Новое место</h4>
+                <form action="#" class="form" name="add-profile" method="GET">
+                    <input type="text" class="form__input form__input_type_name" name="name" placeholder="Название" required>
+                    <input type="text" class="form__input form__input_type_activity" name="about" placeholder="ссылка на картинку" required>
+                    <button type="submit" class="form__button">Создать</button>
+                </form>
+            </div>
+        </div>
+        <div class="popup popup-image">
+            <div class="popup-image__container">
+                <button type="button" class="popup-image__close popup__close"></button>
+                <figure class="popup-image__group">
+                    <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="фото" class="popup-image__img">
+                    <figcaption class="popup-image__description">
+                        <h3 class="popup-image__title">Карачаево-Черкессия</h3>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
     </div>
+    <template id="card-template">
+        <li class="card">
+            <figure class="card__group">
+                <img class="card__image" alt="#" >
+                <button type="button" class="card__delete"></button>
+                <figcaption class="card__description">
+                    <h3 class="card__title"></h3>
+                    <button type="button" class="card__like "></button>
+                </figcaption>
+            </figure>
+        </li>
+    </template>
 <script src="./scripts/index.js"></script> 
 </body>
 </html>

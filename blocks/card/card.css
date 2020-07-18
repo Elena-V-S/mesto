@@ -2,7 +2,10 @@
 @import url('./__group/card__group.css');
 @import url('./__image/card__image.css');
 @import url('./__like/card__like.css');
+@import url('./__like/_color/card__like_color.css');
 @import url('./__title/card__title.css');
+@import url('./__delete/card__delete.css');
+
 
 
 
@@ -12,4 +15,5 @@
     background-size: cover;
     background-position: center;
     margin: 0 auto;
+    position: relative;
 }

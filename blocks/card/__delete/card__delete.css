@@ -1,16 +1,19 @@
-.card__like {
-    background-image: url('../../../images/vector-heart.svg');
+.card__delete {
+    background-image: url('../../../images/delete-vector.svg');
     background-repeat: no-repeat;
     background-position: center;
-    max-width: 20px;
-    height: 18px;
+    max-width: 18px;
+    height: 19px;
     width: 100%;
     background-size: contain;
     padding: 0;
     background-color: transparent;
     border: none;
+    position: absolute;
+    top: 18px;
+    right: 15px;
 }
-.card__like:hover {
+.card__delete:hover {
     cursor : pointer;
     opacity: 0.6;
 }
