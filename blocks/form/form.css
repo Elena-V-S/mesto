@@ -1,6 +1,12 @@
 @import url('./__button/form__button.css');
+@import url('./__button/_inactive/form__button_inactive.css');
 @import url('./__input/form__input.css');
+@import url('./__input/_type/form__input_type_error.css');
+@import url('./__input-error/form__input-error.css');
+@import url('./__input-error/_active/form__input-error_active.css');
+@import url('./__label/form__label.css');
 .form {
+    width: 100%;
     display: flex;
     flex-direction: column;
 }

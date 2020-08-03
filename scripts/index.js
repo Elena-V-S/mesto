@@ -26,6 +26,11 @@ const initialCards = [
     }
 ];
 
+// popupOverlay
+
+const popupOverlay = Array.from(document.querySelectorAll('.popup, .popup_opened'));
+
+
 // popupProfile 
 
 const openPopupProfile = document.querySelector('.profile__edit'); // находим кнопку редактирования профиля в DOM
@@ -34,7 +39,7 @@ const closePopupProfile = popupProfileEdit.querySelector('.popup__close');// к�
 const formProfile = popupProfileEdit.querySelector('.form'); // форма для редактирования профиля в DOM
 const nameInput = popupProfileEdit.querySelector('.form__input_type_name'); // находим поле формы для имени в DOM
 const activityInput = popupProfileEdit.querySelector('.form__input_type_activity');  // находим поле формы для профессии в DOM
-const saveProfile = popupProfileEdit.querySelector('form__button');// находим кнопку сохранения внесенных в форму данных
+const saveProfile = popupProfileEdit.querySelector('.form__button');// находим кнопку сохранения внесенных в форму данных
 
 // popupCard 
 
@@ -42,15 +47,14 @@ const openPopupCard = document.querySelector('.profile__card-edit');// нахо�
 const popupCardEdit = document.querySelector('.popup_type_new-card'); //всплывающее окно popup добавления карточки
 const closePopupCard = popupCardEdit.querySelector('.popup__close');// кнопка закрывающая popup
 const formCard = popupCardEdit.querySelector('.form'); // форма для добавления карточки в DOM
-const saveCard = popupCardEdit.querySelector('form__button');// находим кнопку сохранения новой карточки
-const placeInput = popupCardEdit.querySelector('.form__input_type_name'); // находим поле формы для добавления названия места
-const linkInput = popupCardEdit.querySelector('.form__input_type_activity');  // находим поле для добавления ссылки на картинку
+const saveCard = popupCardEdit.querySelector('.form__button');// находим кнопку сохранения новой карточки
+const placeInput = popupCardEdit.querySelector('.form__input_type_place'); // находим поле формы для добавления названия места
+const linkInput = popupCardEdit.querySelector('.form__input_type_link');  // находим поле для добавления ссылки на картинку
 
 // popupImage
 
 const popupImage = document.querySelector('.popup-image'); //всплывающее окно popup картинки
 const closeImage = popupImage.querySelector('.popup__close');// кнопка закрывающая popupImage
-
 
 // находим элементы страницы 
 
@@ -64,6 +68,7 @@ const cardTemplate = document.querySelector('#card-template').content;//полу
 
 function togglePopup(type) {
     type.classList.toggle('popup_opened');// добавляет или удаляет класс отвечающий за скрытие попапа
+    
 }
 
 //  функция заполнения полей формы редактирования профайла
@@ -121,13 +126,23 @@ function renderCard(card) {
     cardList.prepend(card);
 };
 
-
 //слушатели
 openPopupProfile.addEventListener('click', () => { //кнопка открытия редактирования профиля
+    hideInputError(formProfile, nameInput);// сбрасываем стили невалидных полей
+    hideInputError(formProfile, activityInput);
+    saveProfile.classList.remove('form__button_inactive');
     fieldBlank();
     togglePopup(popupProfileEdit);
 }); 
-openPopupCard.addEventListener('click', () => togglePopup(popupCardEdit)); //кнопка открытия добавления карточки
+openPopupCard.addEventListener('click', () => {
+    hideInputError(formCard, placeInput);// сбрасываем стили невалидных полей
+    hideInputError(formCard, linkInput);
+    saveCard.classList.add('form__button_inactive');
+    saveCard.setAttribute('disabled', true);
+    formCard.reset();
+    togglePopup(popupCardEdit); //кнопка открытия добавления карточки
+});
+
 closePopupProfile.addEventListener('click', () => togglePopup(popupProfileEdit)); // кнопка закрытия редактирования профиля
 closePopupCard.addEventListener('click', () => togglePopup(popupCardEdit));// кнопка закрытия добавления карточки
 formProfile.addEventListener('submit', submitProfileForm); //сохранения данных профиля
@@ -141,7 +156,31 @@ formCard.addEventListener('submit', (elem) => {                // сохране
 
 closeImage.addEventListener('click', () => togglePopup(popupImage));// кнопка закрытия popupImage
 
+//обработчик нажатия на клавишу Escape навешиваем на документ
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && popupProfileEdit.classList.contains('popup_opened')) {
+        togglePopup(popupProfileEdit);
+    } else if (event.key === 'Escape' && popupCardEdit.classList.contains('popup_opened')) {
+        togglePopup(popupCardEdit);
+    } else if (event.key === 'Escape' && popupImage.classList.contains('popup_opened')) {
+        togglePopup(popupImage);
+    }
+});
+
+//функция закрытия попапа кликом на оверлей: клик должен быть совершен вне самого модального окна
+
+popupOverlay.forEach((popupElement) => {
+    popupElement.addEventListener('click', function (evt) {
+        if (evt.target.classList.contains('popup_opened') && 
+        !(evt.target.classList.contains('popup__container') || evt.target.classList.contains('form') 
+        || evt.target.classList.contains('popup__title') || evt.target.classList.contains('form__label') 
+        || evt.target.classList.contains('form__input'))) {
+       
+            togglePopup(popupElement);
+        }
+    });
+});
+
 //переберем элементы массива initialCards и вызовем функцию создания карточки на каждом элементе
 
 initialCards.forEach((card) => {renderCard(createCard(card))});
-

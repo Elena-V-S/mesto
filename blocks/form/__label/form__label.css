@@ -1,0 +1,5 @@
+.form__label {
+    display: flex;
+    position: relative;
+    padding-bottom: 36px;
+}

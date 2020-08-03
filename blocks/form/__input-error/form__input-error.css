@@ -1,0 +1,12 @@
+.form__input-error {
+    display: flex;
+    position: absolute;
+    top: calc(100% / 2);
+    left: 0;
+    transition: 0.3s;
+    opacity: 0;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+    
+}

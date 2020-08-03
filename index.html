@@ -40,9 +40,15 @@
             <div class="popup__container">
                 <button type="button" class="popup__close"></button>
                 <h4 class="popup__title">Редактировать профиль</h4>
-                <form action="#" class="form" name="add-profile" method="GET">
-                    <input type="text" class="form__input form__input_type_name" name="name" placeholder="имя" required>
-                    <input type="text" class="form__input form__input_type_activity" name="about" placeholder="профессия" required>
+                <form action="#" class="form" name="add-profile" method="GET" novalidate>
+                    <label class="form__label">
+                        <input id="name-input" type="text" class="form__input form__input_type_name" name="name" placeholder="имя" minlength="2" maxlength="40" required>
+                        <span id="name-input-error" class="form__input-error form__input-error_active"></span>
+                    </label>    
+                    <label class="form__label">    
+                        <input id="activity-input" type="text" class="form__input form__input_type_activity" name="about" placeholder="профессия" minlength="2" maxlength="200" required>
+                        <span id="activity-input-error" class="form__input-error form__input-error_active"></span>
+                    </label>
                     <button type="submit" class="form__button">Сохранить</button>
                 </form>
             </div>
@@ -51,10 +57,16 @@
             <div class="popup__container">
                 <button type="button" class="popup__close"></button>
                 <h4 class="popup__title">Новое место</h4>
-                <form action="#" class="form" name="add-profile" method="GET">
-                    <input type="text" class="form__input form__input_type_name" name="name" placeholder="Название" required>
-                    <input type="text" class="form__input form__input_type_activity" name="about" placeholder="ссылка на картинку" required>
-                    <button type="submit" class="form__button">Создать</button>
+                <form action="#" class="form" name="add-card" method="GET" novalidate>
+                    <label class="form__label">
+                        <input id="place-input" type="text" class="form__input form__input_type_place" name="place" placeholder="Название" minlength="1" maxlength="30" required>
+                        <span id="place-input-error" class="form__input-error form__input-error_active"></span>
+                    </label> 
+                    <label class="form__label">
+                        <input id="link-input" type="url" class="form__input form__input_type_link" name="link" placeholder="ссылка на картинку" required>
+                        <span id="link-input-error" class="form__input-error form__input-error_active"></span>
+                    </label> 
+                    <button type="submit" class="form__button" disabled>Создать</button>
                 </form>
             </div>
         </div>
@@ -77,11 +89,12 @@
                 <button type="button" class="card__delete"></button>
                 <figcaption class="card__description">
                     <h3 class="card__title"></h3>
-                    <button type="button" class="card__like "></button>
+                    <button type="button" class="card__like"></button>
                 </figcaption>
             </figure>
         </li>
     </template>
+<script src="./scripts/validate.js"></script>
 <script src="./scripts/index.js"></script> 
 </body>
 </html>
