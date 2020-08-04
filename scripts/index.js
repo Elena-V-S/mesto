@@ -67,13 +67,12 @@ const cardTemplate = document.querySelector('#card-template').content;//полу
 // функци открытия / закрытия окна popup
 
 function togglePopup(type) {
-    type.classList.toggle('popup_opened');// добавляет или удаляет класс отвечающий за скрытие попапа
-    
+    type.classList.toggle('popup_opened'); // добавляет или удаляет класс отвечающий за скрытие попапа
 }
 
 //  функция заполнения полей формы редактирования профайла
 
-function fieldBlank() {
+function fieldInputs() {
         nameInput.value = profileName.textContent; //Получаем значение элемента страницы, содержащее имя, с помощью свойства textContent и вставляяем его в поле формы для имени с помощью свойства value
         activityInput.value = profileActivity.textContent; // аналогично для профессии
 }
@@ -97,7 +96,7 @@ function createCard(elem) {
     const cardTitle = cardElement.querySelector('.card__title'); 
     
     // наполняем содержимым
-    cardElement.querySelector('.card__image').src = elem.link;
+    openPopupImage.src = elem.link;
     cardTitle.textContent = elem.name;
 
     // навешиваем слушатель на лайк, корзину, картинку и кнопку закрытия попапа
@@ -106,6 +105,7 @@ function createCard(elem) {
         popupImage.querySelector('.popup-image__img').src = evt.target.closest('img').getAttribute('src');  //вызываем ту фотографию которая на карточке
         popupImage.querySelector('.popup-image__title').textContent = cardTitle.textContent; //выводим подпись к вартинке
         togglePopup(popupImage);
+        document.addEventListener('keydown', closePopupWithEscape);
     });
 
     cardDelete.addEventListener('click', (evt) => {  //корзина - удаление карточки
@@ -126,25 +126,51 @@ function renderCard(card) {
     cardList.prepend(card);
 };
 
+//функция закрывающая попап при нажатия на клавишу Escape
+function closePopupWithEscape(event) {
+    if (event.key === 'Escape') {
+        if (popupProfileEdit.classList.contains('popup_opened')) {
+            togglePopup(popupProfileEdit);
+        } else if (popupCardEdit.classList.contains('popup_opened')) {
+            togglePopup(popupCardEdit);
+        } else if (popupImage.classList.contains('popup_opened')) {
+            togglePopup(popupImage);
+        }
+        document.removeEventListener('keydown', closePopupWithEscape);
+    } 
+};
+   
+
 //слушатели
-openPopupProfile.addEventListener('click', () => { //кнопка открытия редактирования профиля
+openPopupProfile.addEventListener('click', () => { //кнопка открытия попап редактирования профиля
     hideInputError(formProfile, nameInput);// сбрасываем стили невалидных полей
     hideInputError(formProfile, activityInput);
-    saveProfile.classList.remove('form__button_inactive');
-    fieldBlank();
+    saveProfile.classList.remove('form__button_inactive');//делаем кнопку активной
+    fieldInputs();
     togglePopup(popupProfileEdit);
+    document.addEventListener('keydown', closePopupWithEscape);
+   
 }); 
-openPopupCard.addEventListener('click', () => {
+openPopupCard.addEventListener('click', () => {  //кнопка открытия попап добавления карточки
     hideInputError(formCard, placeInput);// сбрасываем стили невалидных полей
     hideInputError(formCard, linkInput);
-    saveCard.classList.add('form__button_inactive');
+    saveCard.classList.add('form__button_inactive'); //делаем кнопку неактивной
     saveCard.setAttribute('disabled', true);
     formCard.reset();
     togglePopup(popupCardEdit); //кнопка открытия добавления карточки
+    document.addEventListener('keydown', closePopupWithEscape);
 });
 
-closePopupProfile.addEventListener('click', () => togglePopup(popupProfileEdit)); // кнопка закрытия редактирования профиля
-closePopupCard.addEventListener('click', () => togglePopup(popupCardEdit));// кнопка закрытия добавления карточки
+closePopupProfile.addEventListener('click', () => {  // кнопка закрытия редактирования профиля
+    togglePopup(popupProfileEdit);
+    document.removeEventListener('keydown', closePopupWithEscape);
+}); 
+
+closePopupCard.addEventListener('click', () => {  // кнопка закрытия добавления карточки
+    togglePopup(popupCardEdit);
+    document.removeEventListener('keydown', closePopupWithEscape);
+});
+
 formProfile.addEventListener('submit', submitProfileForm); //сохранения данных профиля
 formCard.addEventListener('submit', (elem) => {                // сохранение добавленной карточки
     elem.preventDefault(); //отменяем стандартную отправку формы
@@ -154,17 +180,9 @@ formCard.addEventListener('submit', (elem) => {                // сохране
     togglePopup(popupCardEdit);// закрываем попап
 });
 
-closeImage.addEventListener('click', () => togglePopup(popupImage));// кнопка закрытия popupImage
-
-//обработчик нажатия на клавишу Escape навешиваем на документ
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape' && popupProfileEdit.classList.contains('popup_opened')) {
-        togglePopup(popupProfileEdit);
-    } else if (event.key === 'Escape' && popupCardEdit.classList.contains('popup_opened')) {
-        togglePopup(popupCardEdit);
-    } else if (event.key === 'Escape' && popupImage.classList.contains('popup_opened')) {
-        togglePopup(popupImage);
-    }
+closeImage.addEventListener('click', () => {  // кнопка закрытия popupImage
+    togglePopup(popupImage);
+    document.removeEventListener('keydown', closePopupWithEscape);
 });
 
 //функция закрытия попапа кликом на оверлей: клик должен быть совершен вне самого модального окна
@@ -175,8 +193,8 @@ popupOverlay.forEach((popupElement) => {
         !(evt.target.classList.contains('popup__container') || evt.target.classList.contains('form') 
         || evt.target.classList.contains('popup__title') || evt.target.classList.contains('form__label') 
         || evt.target.classList.contains('form__input'))) {
-       
             togglePopup(popupElement);
+            document.removeEventListener('keydown', closePopupWithEscape);
         }
     });
 });
