@@ -66,10 +66,20 @@ const cardTemplate = document.querySelector('#card-template').content;//полу
 
 // функци открытия / закрытия окна popup
 
-function togglePopup(type) {
-    type.classList.toggle('popup_opened'); // добавляет или удаляет класс отвечающий за скрытие попапа
-}
+function togglePopup(popupType) {
+    if (popupType.classList.contains('popup_opened')) {
+        document.removeEventListener('keydown', closePopupWithEscape);
+    };
+    popupType.classList.toggle('popup_opened'); // добавляет или удаляет класс отвечающий за скрытие попапа
+};
 
+//функция закрывающая попап при нажатия на клавишу Escape
+function closePopupWithEscape(event) {
+    const activePopup = document.querySelector('.popup_opened');
+    if (event.key === 'Escape') {
+        togglePopup(activePopup);
+    };
+};
 //  функция заполнения полей формы редактирования профайла
 
 function fieldInputs() {
@@ -126,21 +136,6 @@ function renderCard(card) {
     cardList.prepend(card);
 };
 
-//функция закрывающая попап при нажатия на клавишу Escape
-function closePopupWithEscape(event) {
-    if (event.key === 'Escape') {
-        if (popupProfileEdit.classList.contains('popup_opened')) {
-            togglePopup(popupProfileEdit);
-        } else if (popupCardEdit.classList.contains('popup_opened')) {
-            togglePopup(popupCardEdit);
-        } else if (popupImage.classList.contains('popup_opened')) {
-            togglePopup(popupImage);
-        }
-        document.removeEventListener('keydown', closePopupWithEscape);
-    } 
-};
-   
-
 //слушатели
 openPopupProfile.addEventListener('click', () => { //кнопка открытия попап редактирования профиля
     hideInputError(formProfile, nameInput);// сбрасываем стили невалидных полей
@@ -149,24 +144,24 @@ openPopupProfile.addEventListener('click', () => { //кнопка открыти
     fieldInputs();
     togglePopup(popupProfileEdit);
     document.addEventListener('keydown', closePopupWithEscape);
-   
 }); 
+
 openPopupCard.addEventListener('click', () => {  //кнопка открытия попап добавления карточки
     hideInputError(formCard, placeInput);// сбрасываем стили невалидных полей
     hideInputError(formCard, linkInput);
     saveCard.classList.add('form__button_inactive'); //делаем кнопку неактивной
     saveCard.setAttribute('disabled', true);
     formCard.reset();
-    togglePopup(popupCardEdit); //кнопка открытия добавления карточки
+    togglePopup(popupCardEdit);
     document.addEventListener('keydown', closePopupWithEscape);
 });
 
-closePopupProfile.addEventListener('click', () => {  // кнопка закрытия редактирования профиля
+closePopupProfile.addEventListener('click', () => {  // кнопка закрытия попапа редактирования профиля
     togglePopup(popupProfileEdit);
     document.removeEventListener('keydown', closePopupWithEscape);
 }); 
 
-closePopupCard.addEventListener('click', () => {  // кнопка закрытия добавления карточки
+closePopupCard.addEventListener('click', () => {  // кнопка закрытия попапа добавления карточки
     togglePopup(popupCardEdit);
     document.removeEventListener('keydown', closePopupWithEscape);
 });
