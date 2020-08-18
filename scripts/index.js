@@ -1,7 +1,7 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-import {object, initialCards} from './Сonfigs.js';
-import {togglePopup, closePopupOverlai} from './utils.js';
+import {object, initialCards} from './configs.js';
+import {popupImage, closeImage, togglePopup, closePopupOverlai} from './utils.js';
 
 
 // popupProfile 
@@ -23,6 +23,8 @@ const formCard = popupCardEdit.querySelector('.form'); // форма для до
 const saveCard = popupCardEdit.querySelector('.form__button');// находим кнопку сохранения новой карточки
 const placeInput = popupCardEdit.querySelector('.form__input_type_place'); // находим поле формы для добавления названия места
 const linkInput = popupCardEdit.querySelector('.form__input_type_link');  // находим поле для добавления ссылки на картинку
+
+
 
 // находим элементы страницы 
 
@@ -74,6 +76,11 @@ closePopupProfile.addEventListener('click', () => {  // кнопка закры�
 
 closePopupCard.addEventListener('click', () => {  // кнопка закрытия попапа добавления карточки
     togglePopup(popupCardEdit);
+});
+
+ 
+closeImage.addEventListener('click', () => {  // кнопка закрытия попапа-карточки
+    togglePopup(popupImage);
 });
 
 formProfile.addEventListener('submit', submitProfileForm); //сохранения данных профиля

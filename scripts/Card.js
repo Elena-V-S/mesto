@@ -1,5 +1,5 @@
 
-import {popupImage, closeImage, closePopupWithEscape, togglePopup} from './utils.js';
+import {popupImage, togglePopup} from './utils.js';
 
 //класс Card, создаёт карточку с текстом и ссылкой на изображение
 
@@ -35,12 +35,6 @@ class Card {
       popupImage.querySelector('.popup-image__title').textContent = this._name;  //выводим подпись к вартинке
       togglePopup(popupImage);  // открытие popupImage
   }
-  //Обработчик клика на крестик
-  _handleClosePopup () {
-      popupImage.querySelector('.popup-image__img').src = '';
-      popupImage.querySelector('.popup-image__title').src = '';
-      popupImage.classList.remove('popup_opened');
-  }
 
 //Слушатель
   _setEventListeners() {  
@@ -56,12 +50,6 @@ class Card {
       this._element.querySelector('.card__delete').addEventListener('click', () => {
           this._handleDeleteClick();
       });
-
-      //слушатель клика на крестик - закрой попап
-      closeImage.addEventListener('click', () => {
-          this._handleClosePopup();
-          document.removeEventListener('keydown', closePopupWithEscape);
-      });  
   }
 
   //Публичный метод generateCard добавляет данные в разметку и 

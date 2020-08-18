@@ -6,9 +6,11 @@ export const closeImage = popupImage.querySelector('.popup__close');// кноп�
 export function togglePopup(popupType) {
     if (popupType.classList.contains('popup_opened')) {
         document.removeEventListener('keydown', closePopupWithEscape);
+    } else {
+        document.addEventListener('keydown', closePopupWithEscape);
     };
     popupType.classList.toggle('popup_opened'); // добавляет или удаляет класс отвечающий за скрытие попапа
-    document.addEventListener('keydown', closePopupWithEscape);
+    
   };
 
 //функция закрывающая попап при нажатия на клавишу Escape
