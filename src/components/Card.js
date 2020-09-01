@@ -1,14 +1,14 @@
-
-import {popupImage, togglePopup} from './utils.js';
+import PopupWithImage from './PopupWithImage.js';
 
 //класс Card, создаёт карточку с текстом и ссылкой на изображение
 
-class Card {
-  constructor(data, cardSelector) {
-        this._name = data.name;
-        this._link = data.link;
-        this._cardSelector = cardSelector;
-    }
+export default class Card {
+    constructor({data, handleCardClick}, cardSelector) {
+      this._name = data.name;
+      this._link = data.link;
+      this._handleCardClick = handleCardClick;  //Обработчик клика на карточку
+      this._cardSelector = cardSelector;
+  }
 
   //Приватный метод _getTemplate забирает размеку из HTML, 
   //клонирует элемент и везвращает DOM-элемент карточки
@@ -29,22 +29,20 @@ class Card {
   _handleDeleteClick() {
       this._element.remove();
   }
-  //Обработчик клика на карточку
-  _handleOpenPopup () {
-      popupImage.querySelector('.popup-image__img').src = this._link; //вызываем ту фотографию которая на карточке
-      popupImage.querySelector('.popup-image__title').textContent = this._name;  //выводим подпись к вартинке
-      togglePopup(popupImage);  // открытие popupImage
-  }
+ 
+
 
 //Слушатель
   _setEventListeners() {  
       //слушатель клика на карточку - открой попап
       this._element.querySelector('.card__image').addEventListener('click', () => {
-          this._handleOpenPopup();
+          //this._handleOpenPopup();
+          this._handleCardClick();
       });
       //слушатель клика на лайк - закрась сердечко
       this._element.querySelector('.card__like').addEventListener('click', () => {
           this._handleLikeClick();
+         
       });
       //слушатель клика на корзину - удали карточку
       this._element.querySelector('.card__delete').addEventListener('click', () => {
@@ -54,6 +52,7 @@ class Card {
 
   //Публичный метод generateCard добавляет данные в разметку и 
   //возвращает готовые карточки внешним функциям
+
   generateCard() { 
       // Запишем разметку в приватное поле _element. 
       // Так у других элементов появится доступ к ней.
@@ -72,4 +71,4 @@ class Card {
   };
 };
 
-export default Card;
+
