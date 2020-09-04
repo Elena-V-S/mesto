@@ -1,3 +1,4 @@
+
 class FormValidator {
     constructor(data, formElement) {
         this._formElement = formElement;
@@ -68,4 +69,3 @@ class FormValidator {
 };
 
 export default FormValidator;
-

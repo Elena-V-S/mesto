@@ -1,9 +1,9 @@
 export default class UserInfo {
-    constructor(data, userNameSelector, userActivitySelector ) {
-        this._name = data.name;
-        this._activity = data.activity
+    constructor(userNameSelector, userActivitySelector) {
         this._userNameSelector = userNameSelector;
         this._userActivitySelector = userActivitySelector;
+        this._userName = document.querySelector(this._userNameSelector);
+        this._userActivity = document.querySelector(this._userActivitySelector);
       }
 
       getUserInfo() { //метод возвращает данные пользователя их надо передать в форму при открытии?
@@ -13,8 +13,8 @@ export default class UserInfo {
             }
       }
 
-      setUserInfo() { // метод принимает новые данные пользователя и добавляет их на страницу
-        document.querySelector(this._userNameSelector).textContent = this._name;
-        document.querySelector(this._userActivitySelector).textContent = this._activity;
+      setUserInfo({ name, activity }) { // метод принимает новые данные пользователя и добавляет их на страницу
+        this._userName.textContent = name;
+        this._userActivity.textContent = activity;
       }
     }

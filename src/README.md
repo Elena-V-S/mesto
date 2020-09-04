@@ -1,4 +1,4 @@
-# Проект 4: Место  и Проект 5 
+
 # Проектная работа 8
 
 ### Описание
@@ -6,8 +6,8 @@
 Одностраничный сайт - учебный проект. Ссылка на проект:  https://elena-v-s.github.io/mesto/.
 В 7 работе в  код добавлены классы Card и FormValidator.
  JavaScript разбит на модули, спользоанв  директивы export и import.
- В 8 работе добавлены классы Popup, PopupWithForm, PopupWithImage, Section, UserInfo.
- Проект собран программой Webpack.
+ В 8 проекте добавлены классы Section, Popup, PopupWithForm, PopupWithImage и UserInfo.
+ Настроена сборка Вебпаком.
 
 ### Технологии
 

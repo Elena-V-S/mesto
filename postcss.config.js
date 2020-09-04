@@ -4,5 +4,5 @@ module.exports = {
             preset: 'default',
         }),
         require('autoprefixer')()
-    ],
+    ]
 };

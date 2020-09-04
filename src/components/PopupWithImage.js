@@ -1,16 +1,15 @@
-import Popup from './Popup.js';
+import Popup from '../components/Popup.js';
 
 export default class PopupWithImage extends Popup {
-    constructor(name, link, popupSelector) {
+    constructor(popupSelector) {
         super(popupSelector);
-        this._name = name;
-        this._link = link;
+        this._img = this._popup.querySelector('.popup-image__img');
+        this._title = this._popup.querySelector('.popup-image__title');
         }
  
-  open() {
-    this._popup = super._getTemplate(); // создаём элемент
+  open({name, link}) {
     super.open();
-    this._popup.querySelector('.popup-image__img').src = this._link; //вызываем ту фотографию которая на карточке
-    this._popup.querySelector('.popup-image__title').textContent = this._name;  //выводим подпись к вартинке
+    this._img.src = link; //вызываем ту фотографию которая на карточке
+    this._title.textContent = name;  //выводим подпись к вартинке
   }
 }
