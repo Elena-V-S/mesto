@@ -1,11 +1,17 @@
 //класс Card, создаёт карточку с текстом и ссылкой на изображение
 
 class Card {
-  constructor({data: {name, link}, handleCardClick}, cardSelector) {
+  constructor({data: {name, link, likes, _id}, handleCardClick, handleDeleteIconClick, handleIconClick}, cardSelector) {
     this._name = name;
     this._link = link;
+    this._likes = likes;
+    this._id = _id;
+    //this.owner._id = data.owner._id;
     this._handleCardClick = handleCardClick;  //Обработчик клика на карточку
+    this._handleDeleteIconClick = handleDeleteIconClick; //Обработчик клика на удаление
+    this._handleIconClick = handleIconClick; //Обработчик клика на лайк
     this._cardSelector = cardSelector;
+ 
 }
 
   //Приватный метод _getTemplate забирает размеку из HTML, 
@@ -20,33 +26,36 @@ class Card {
 // Обработчики
 
   //Обработчик клика на лайк
-  _handleLikeClick() {
-      this._element.querySelector('.card__like').classList.toggle('card__like_color');
-  }
+  // _handleLikeClick() {
+  //     this._element.querySelector('.card__like').classList.toggle('card__like_color');
+  //     this._handleIconClick();
+  // }
   //Обработчик клика на корзину
-  _handleDeleteClick() {
-      this._element.remove();
-  }
-
+  
+  remove() {
+        this._element.remove();
+    }
 //Слушатель
   _setEventListeners() {  
       //слушатель клика на карточку - открой попап
       this._element.querySelector('.card__image').addEventListener('click', () => {
-          this._handleCardClick({ name: this._name, link: this._link });
+          this._handleCardClick({ name: this._name, link: this._link, _id: this._id });
       });
-      //слушатель клика на лайк - закрась сердечко
+      //слушатель клика на лайк - закрась сердечко и увеличь счетчик на 1
       this._element.querySelector('.card__like').addEventListener('click', () => {
-          this._handleLikeClick();
+          this._element.querySelector('.card__like').classList.toggle('card__like_color');
+          //this._element.querySelector('.card__like-counter').textContent = 
+          this._handleIconClick( {name: this._name, link: this._link, _id: this._id});
       });
       //слушатель клика на корзину - удали карточку
       this._element.querySelector('.card__delete').addEventListener('click', () => {
-          this._handleDeleteClick();
+          this._handleDeleteIconClick({name: this._name, link: this._link, _id: this._id});
       });
   }
 
   //Публичный метод generateCard добавляет данные в разметку и 
   //возвращает готовые карточки внешним функциям
-  generateCard() { 
+  generateCard(myId, ownerId) { 
       // Запишем разметку в приватное поле _element. 
       // Так у других элементов появится доступ к ней.
       this._element = this._getTemplate();
@@ -55,11 +64,18 @@ class Card {
       this._setEventListeners();
      
       this._img = this._element.querySelector('.card__image');
-    
+      this._counter = this._element.querySelector('.card__like-counter');
+      
       // Добавим данные
       this._img.src = this._link;
       this._img.alt = this._name;
       this._element.querySelector('.card__title').textContent = this._name;
+      this._counter.textContent = Object.keys(this._likes).length;
+      
+      // удалим корзину у чужих карточек
+      if (myId != ownerId) {
+        this._element.querySelector('.card__delete').remove();
+      }
      
       // Вернём элемент наружу
       return this._element;  

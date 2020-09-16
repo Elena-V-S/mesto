@@ -1,0 +1,18 @@
+.profile__avatar-update {
+    background-image: url('../../../images/vector-pencil.svg');
+    max-width: 26px;
+    height: 26px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -13px; /* (width)/2 */
+    margin-top: -13px;
+}
+.profile__update:hover {
+    
+    z-index: 5;
+}

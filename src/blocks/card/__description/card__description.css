@@ -1,8 +1,9 @@
 .card__description {
     min-width: 150px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 25px 15px 31px 25px;
+    padding: 21px 21px 24px 21px;
     box-sizing: border-box;
 }

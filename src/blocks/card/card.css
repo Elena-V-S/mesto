@@ -5,6 +5,8 @@
 @import url('./__like/_color/card__like_color.css');
 @import url('./__title/card__title.css');
 @import url('./__delete/card__delete.css');
+@import url('./card__like-counter/card__like-counter.css');
+@import url('./card__like-group/card__like-group.css');
 
 
 

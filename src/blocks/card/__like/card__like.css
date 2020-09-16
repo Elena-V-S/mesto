@@ -2,6 +2,7 @@
     background-image: url('../../../images/vector-heart.svg');
     background-repeat: no-repeat;
     background-position: center;
+    
     max-width: 20px;
     height: 18px;
     width: 100%;
@@ -9,6 +10,7 @@
     padding: 0;
     background-color: transparent;
     border: none;
+    
 }
 .card__like:hover {
     cursor : pointer;
