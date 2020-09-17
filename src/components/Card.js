@@ -6,7 +6,6 @@ class Card {
     this._link = link;
     this._likes = likes;
     this._id = _id;
-    //this.owner._id = data.owner._id;
     this._handleCardClick = handleCardClick;  //Обработчик клика на карточку
     this._handleDeleteIconClick = handleDeleteIconClick; //Обработчик клика на удаление
     this._handleIconClick = handleIconClick; //Обработчик клика на лайк
@@ -24,7 +23,8 @@ class Card {
   }
   
   remove() {
-        this._element.remove();
+    this._element.remove();
+    this._element = null;
     }
 //Слушатель
   _setEventListeners() {  

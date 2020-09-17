@@ -74,6 +74,7 @@ function createCard(item) {
                 api.deleteCard(item._id)
                 .then((res) => {
                    card.remove();
+                   
                 })
                 .then((res) => {
                    confirmPopoup.close()
