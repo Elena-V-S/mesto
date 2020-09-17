@@ -148,7 +148,7 @@ const popupCardAdd = new PopupWithForm({
            .then((res) => {              
             const newCard = createCard(res);  // создаем экземпляр Card передаём ему объект с данными формы
             const cardElement = newCard.generateCard();  // заполняем карточку и возвращаем наружу
-            cardsList.addItem(cardElement); // Добавляем в DOM
+            cardsList.addItem(cardElement, res); // Добавляем в DOM
         })
         .then((res) => {              
             popupCardAdd.close();      
@@ -208,6 +208,8 @@ openPopupCard.addEventListener('click', () => {  //кнопка открытия
 });
 
 profileFoto.addEventListener('click', () => { //кнопка открытия попап редактирования аватара
+    const popupButton = popupAvatarUpdate._form.querySelector('.form__button');
+    popupButton.classList.add('form__button_inactive'); //делаем кнопку неактивной
     popupAvatarUpdate.open();
 });
 
@@ -237,7 +239,7 @@ api.getAllDates()
             const newCard = createCard(item);
             const cardElement = newCard.generateCard(dataProfile._id, item.owner._id );  // заполняем карточку и возвращаем наружу
          
-            cardsList.addItem(cardElement); // Добавляем в DOM
+            cardsList.addItem(cardElement, dataCards); // Добавляем в DOM
         },
       },
       '.elements__list'

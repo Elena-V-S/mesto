@@ -3,17 +3,22 @@ export default class Api {
       this.baseUrl = baseUrl
       this.headers = headers
     }
+
+// метод _getResponseData проверяет ответ сервера и преобразовывает его из json 
+_getResponseData(res) {
+    if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(new Error(`Ошибка: ${res.status}`));
+    
+}
 // запрашиваем данные профиля с сервера
     getUserData() {
         return fetch(`${this.baseUrl}/users/me`, {
             headers: this.headers
         })
         .then(res => {
-            if (res.ok) {
-              return res.json();
-            }
-            // если ошибка, отклоняем промис
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._getResponseData(res);
         })
     }
 // Редактирование профиля /отправляем данные профиля на сервер
@@ -27,11 +32,7 @@ export default class Api {
         headers: this.headers,
         })
         .then(res => {
-            if (res.ok) {
-              return res.json();
-            }
-            // если ошибка, отклоняем промис
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._getResponseData(res);
         })
     }
 //запрашиваем карточки 
@@ -40,11 +41,7 @@ export default class Api {
             headers: this.headers
         })
         .then(res => {
-            if (res.ok) {
-              return res.json();
-            }
-            // если ошибка, отклоняем промис
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._getResponseData(res);
         })
     }
     
@@ -63,11 +60,7 @@ export default class Api {
         headers: this.headers
         })
         .then(res => {
-            if (res.ok) {
-              return res.json();
-            }
-            // если ошибка, отклоняем промис
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._getResponseData(res);
         })
     }
    // удаление карточки
@@ -78,11 +71,7 @@ export default class Api {
         headers: this.headers
         })
         .then(res => {
-            if (res.ok) {
-            return res.json();
-            }
-            // если ошибка, отклоняем промис
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._getResponseData(res);
         })
 }
 // постановка лайка
@@ -95,11 +84,7 @@ addLike (cardId) {
         headers: this.headers,
         })
         .then(res => {
-            if (res.ok) {
-              return res.json();
-            }
-            // если ошибка, отклоняем промис
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._getResponseData(res);
         })
 
 }
@@ -113,11 +98,7 @@ deleteLike (cardId) {
         headers: this.headers,
         })
         .then(res => {
-            if (res.ok) {
-              return res.json();
-            }
-            // если ошибка, отклоняем промис
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._getResponseData(res);
         })
     
 }
@@ -131,11 +112,7 @@ updateAvatar (avatar) {
         headers: this.headers,
         })
         .then(res => {
-            if (res.ok) {
-              return res.json();
-            }
-            // если ошибка, отклоняем промис
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._getResponseData(res);
         })
 }
 

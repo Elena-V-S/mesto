@@ -11,7 +11,13 @@ export default class Section {
     } 
 
     //  addItem - публичный метод, который принимает DOM-элемент и добавляет его в контейнер.
-    addItem(element) {
-      this._container.prepend(element);
-    }
+    addItem(element, data) {
+      // this._container.prepend(element);
+        if (Array.isArray(data)) { 
+          this._container.append(element); 
+        } else { 
+          this._container.prepend(element); 
+        } 
+      } 
+    
   }

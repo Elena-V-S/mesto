@@ -22,15 +22,6 @@ class Card {
     .cloneNode(true);
     return cardElement;
   }
-
-// Обработчики
-
-  //Обработчик клика на лайк
-  // _handleLikeClick() {
-  //     this._element.querySelector('.card__like').classList.toggle('card__like_color');
-  //     this._handleIconClick();
-  // }
-  //Обработчик клика на корзину
   
   remove() {
         this._element.remove();

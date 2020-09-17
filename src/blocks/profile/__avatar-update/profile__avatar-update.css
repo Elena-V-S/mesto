@@ -11,6 +11,7 @@
     left: 50%;
     margin-left: -13px; /* (width)/2 */
     margin-top: -13px;
+    z-index: -1;
 }
 .profile__update:hover {
     
